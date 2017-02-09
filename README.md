@@ -1,2 +1,2 @@
 # walker
-This is a little project called a walker. It is a little pixel that moves randomly and leave a trail wherever it goes.
+This project is mainly made with processing.js (http://processingjs.org/)
