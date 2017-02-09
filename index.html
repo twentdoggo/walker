@@ -1,1 +1,72 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Doggo Projects</title>
+        <style>
+            #bottom-tag { 
+                background-color: white;
+            }
+        </style>
+    </head>
+<body>
+    <p align="center"> 
+      <canvas id="mycanvas"></canvas> 
+    </p>
+<p id="bottom-tag">
+    <a href="#">Back to top</a>
+    <a href="https://github.com/twentdoggo/project_website" target="_blank">Hosted on GitHub</a>
+</p>
+</body>
 
+<script src="https://cdn.jsdelivr.net/processing.js/1.4.8/processing.min.js"></script> 
+
+<script>
+   var sketchProc = function(processingInstance) {
+    with (processingInstance) {
+       size(screen.width, screen.height); 
+       frameRate(30);
+       
+       // ProgramCodeGoesHere
+         var Walker = function() {
+               this.x = width/2;
+               this.y = height/2;
+           };
+           
+           Walker.prototype.display = function() {
+               noStroke();
+               fill(255, 0, 0);
+               ellipse(this.x, this.y, 1, 1);
+           };
+           
+           // Randomly move right, left, down, or up
+           Walker.prototype.walk = function() {
+               var choice = floor(random(4));
+               if (choice === 0) {
+                   //move right
+                   this.x++;
+               } else if (choice === 1) {
+                   //move left
+                   this.x--;
+               } else if (choice === 2) {
+                   //move down
+                   this.y++;
+               } else {
+                   //move up
+                   this.y--;
+               } 
+           };
+           
+           var w = new Walker();
+           
+           draw = function() {
+               w.walk();
+               w.display();
+           };
+   }};
+
+   // Get the canvas that Processing-js will use
+   var canvas = document.getElementById("mycanvas"); 
+   // Pass the function sketchProc (defined in myCode.js) to Processing's constructor.
+   var processingInstance = new Processing(canvas, sketchProc); 
+</script>
